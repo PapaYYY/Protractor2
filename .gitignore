@@ -1,0 +1,5 @@
+.idea/
+allure-results/
+node_modules/
+npm-debug.txt
+winston-basic.txt
