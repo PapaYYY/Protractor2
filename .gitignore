@@ -1,5 +1,10 @@
+# WebStorm files
 .idea/
+# Aluure results
 allure-results/
+# Node modules 
 node_modules/
+# npm debug
 npm-debug.txt
+# winston output
 winston-basic.txt
