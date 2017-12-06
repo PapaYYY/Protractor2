@@ -1,19 +1,11 @@
 {
-  "testsiteurl": "https://192.168.242.13/",
-
+  "testsiteurl": "https://192.168.242.11/",
   "locators": {
-          "loginagage":{
-
-          }
-
+    "loginagage":{
+    }
   },
-
   "userdetails":{
     "username":"mmam@csc-get.local",
     "password":"Qwerty123"
   }
-
-
-
-
 }
