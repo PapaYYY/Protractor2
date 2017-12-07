@@ -1,8 +1,7 @@
 function LoginPO() {
     this.login = function (url, name, password) {
-        browser.ignoreSynchronization = true;
         browser.get(url);
-        browser.sleep(1000);
+        browser.sleep(2000);
         element(by.id("userNameInput")).sendKeys(name);
         element(by.id("passwordInput")).sendKeys(password);
         element(by.id("submitButton")).click();

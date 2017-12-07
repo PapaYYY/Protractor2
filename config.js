@@ -1,25 +1,34 @@
 // conf.js
+// noinspection JSAnnotator
 exports.config = {
     directConnect: true,
 
     // Capabilities to be passed to the webdriver instance.
-    capabilities: {
+    multiCapabilities:[ {
         'browserName': 'chrome'
     },
-
+        /*      {
+                  'browserName': 'firefox'
+              }
+        */
+    ],
     framework: 'jasmine2',
 
     //  seleniumAddress: 'http://localhost:4444/wd/hub',
 
-    specs: ['SimpleTest1.js'],
+    suites: {basicTests:['Specs/SimpleTests/**.js']
+    },
 
-    /* // Options to be passed to Jasmine.
+     // Options to be passed to Jasmine.
      jasmineNodeOpts: {
-       defaultTimeoutInterval: 1000
-     }
-     */
+         //defaultTimeoutInterval: 1000,
+         showColors: true,
+         isVerbose: true,
+         includeStackTrace: true
+     },
 
     onPrepare: function () {
+        browser.driver.manage().window().setSize(1920, 1080);
         var AllureReporter = require('jasmine-allure-reporter');
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: 'allure-results'

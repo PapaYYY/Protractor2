@@ -1,18 +1,19 @@
-var logger = require('./log');
-var settings = require('./Configuration/Settings.json');
+var logger = require('../../log');
+var Settings = require('../../Configuration/Settings.json');
 var jasminedatapriveder = require('jasmine-data-provider');
-var loginPO = require('./PageObjects/LoginPO');
-var bidsListPO = require('./PageObjects/BidsListPO');
-var costingTabPO = require('./PageObjects/CostingTabPO');
+var LoginPO = require('../../PageObjects/LoginPO');
+var BidsListPO = require('../../PageObjects/BidsListPO');
+var CostingTabPO = require('../../PageObjects/CostingTabPO');
 
 describe("Creating bids with different commodities...", function () {
 
     beforeEach(
         function () {
             logger.log('info', 'Navigating to the wab site...');
-            var loginPage = new loginPO.LoginPO();
+            var loginPage = new LoginPO.LoginPO();
             //Logining the app
-            loginPage.login(settings.testsiteurl, settings.userdetails.username, settings.userdetails.password);
+            browser.ignoreSynchronization = true;
+            loginPage.login(Settings.testsiteurl, Settings.userdetails.username, Settings.userdetails.password);
         }
     );
 
@@ -22,10 +23,10 @@ describe("Creating bids with different commodities...", function () {
         var bidDuration = Math.round(Math.random()*100);
 
         //creating Live bid
-        var bidsListPage = new bidsListPO.BidsListPO();
-        bidsListPage.createLiveBid(randomName, bidDuration);
+        var bidsListPage = new BidsListPO.BidsListPO();
+        bidsListPage.createLiveBid(randomName, bidDuration, 11);
 
-        var costingTabPage = new costingTabPO.CostingTabPO();
+        var costingTabPage = new CostingTabPO.CostingTabPO();
         //add client country
         costingTabPage.addClientCountry("Ukraine");
         //creating structure with Commodity
